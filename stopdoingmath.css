@@ -1,16 +1,34 @@
-p {
+
+ p {
 	font-family: Arial
 }
+
 h1 {
 	font-family: Arial
 }
+
 h2 {
 	font-family: Arial
 }
+
 li {
 	font-family: Arial
 }
+
 .question {
   color: red;
   text-align: center;
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+.apples {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
 }
