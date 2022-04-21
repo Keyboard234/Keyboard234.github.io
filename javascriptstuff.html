@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <script>
+            function funny() {
+                console.log("too lazy to do the noise no");
+            }
+        </script>
+
+        <meta name="viewport" content="width=device-width">
+        <meta charset="utf-8">
+        <title>coolpixels.net v2.0</title>
+        </script>
+    </head>
+    <body>
+        <h1>coolpixels.net v2.0</h1>
+        <p>your ip isnt logged until you press button</p>
+        <br>
+
+        <?php
+        file_put_contents("visitors.txt", @file_get_contents("visitors.txt")+1);
+
+        echo file_get_contents("visitors.txt") . " people visited my web site!";
+
+        $iplist = fopen("iplist.txt", "a") or die("<br>unable to open ip list");
+
+        echo "<br><br>";
+
+        /* only write if the ip isn't already listed */
+        if (!strstr(file_get_contents("iplist.txt"), $_SERVER['REMOTE_ADDR'])) {
+            fwrite($iplist, "\n" . $_SERVER['REMOTE_ADDR']);
+        }
+        fclose($iplist);
+
+        if (intval(file_get_contents("visitors.txt")) >= 5000) {
+            echo nl2br(file_get_contents("iplist.txt"));
+        } else {
+            echo "ip list reveal at 5000 visits";
+            
+            echo "<br><input type='button' value='reveal ip list' onclick='funny();'>";
+        }
+        ?>
+    </body>
+</html>
