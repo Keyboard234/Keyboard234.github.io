@@ -3,7 +3,7 @@ var ctx = canvas.getContext("2d");
 var data = document.getElementById("Data");
 var [up, down, left, right] = [false, false, false, false]
 var first = true
-let snakecoords = [{x: 0, y: 0}];
+let snakecoords = [{ x: 0, y: 0 }];
 let food_x = 0;
 let food_y = 0;
 let dx = 0;
@@ -28,51 +28,51 @@ function drawLines() {
     }
 }
 
-function move() {  
-  const head = {x: snakecoords[0].x + dx, y: snakecoords[0].y + dy};
-  if (head.x > 380) {
-    console.log("out of screen")
-    head.x = -400
-  }
-  if (head.x < -400) {
-    console.log("out of screen")
-    head.x = 380
-  }
-  if (head.y < -300) {
-    console.log("out of screen")
-    head.y = 280
-  }
-  if (head.y > 280) {
-    console.log("out of screen")
-    head.y = -300
-  }
-  snakecoords.unshift(head);
-  const has_eaten_food = snakecoords[0].x === food_x && snakecoords[0].y === food_y;
-  if (has_eaten_food) {
-    genFood();
-  } else {
-    snakecoords.pop();
-  }
+function move() {
+    const head = { x: snakecoords[0].x + dx, y: snakecoords[0].y + dy };
+    if (head.x > 380) {
+        console.log("out of screen")
+        head.x = -400
+    }
+    if (head.x < -400) {
+        console.log("out of screen")
+        head.x = 380
+    }
+    if (head.y < -300) {
+        console.log("out of screen")
+        head.y = 280
+    }
+    if (head.y > 280) {
+        console.log("out of screen")
+        head.y = -300
+    }
+    snakecoords.unshift(head);
+    const has_eaten_food = snakecoords[0].x === food_x && snakecoords[0].y === food_y;
+    if (has_eaten_food) {
+        genFood();
+    } else {
+        snakecoords.pop();
+    }
 }
 
-function randomFood(min, max){
+function randomFood(min, max) {
     thing1 = (Math.floor(Math.random() * (max - min + 1)) + min);
     thing2 = thing1 * 20;
     return thing2;
 }
- 
-function genFood() {  
+
+function genFood() {
     food_x = randomFood(-400 / 20, 380 / 20);
     food_y = randomFood(-300 / 20, 280 / 20);
     snakecoords.forEach(function has_snake_eaten_food(segment) {
-    const has_eaten = segment.x == food_x && segment.y == food_y;
-    if (has_eaten) genFood();
-  });
+        const has_eaten = segment.x == food_x && segment.y == food_y;
+        if (has_eaten) genFood();
+    });
 }
 
 function drawFood(x, y) {
     ctx.beginPath();
-    ctx.rect(canvas.width/2 + x, canvas.height/2 + y, 20, 20);
+    ctx.rect(canvas.width / 2 + x, canvas.height / 2 + y, 20, 20);
     ctx.fillStyle = "lime";
     ctx.fill();
     ctx.closePath();
@@ -84,7 +84,7 @@ function drawPlayer() {
 
 function drawSegments(Segment) {
     ctx.beginPath();
-    ctx.rect(canvas.width/2 + Segment.x, canvas.height/2 + Segment.y, 20, 20);
+    ctx.rect(canvas.width / 2 + Segment.x, canvas.height / 2 + Segment.y, 20, 20);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
@@ -92,9 +92,6 @@ function drawSegments(Segment) {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawPlayer();
-    drawFood(food_x, food_y);
-    drawLines();
     move();
     if (up == true) {
         dy = -20;
@@ -114,12 +111,16 @@ function draw() {
     }
     x += dx;
     y += dy;
+    drawPlayer();
+    drawFood(food_x, food_y);
+    drawLines();
 }
 
 document.addEventListener("keydown", keyHandler, false);
 
 function keyHandler(e) {
-    if(e.key == "w") {
+    console.log(e.key);
+    if (e.key == "w" || e.key == "ArrowUp") {
         if (first == true) {
             up = true;
             first = false;
@@ -130,7 +131,7 @@ function keyHandler(e) {
             right = false;
         }
     }
-    else if(e.key == "s") {
+    else if (e.key == "s" || e.key == "ArrowDown") {
         if (first == true) {
             down = true;
             first = false;
@@ -141,7 +142,7 @@ function keyHandler(e) {
             right = false;
         }
     }
-    if(e.key == "a") {
+    if (e.key == "a" || e.key == "ArrowLeft") {
         if (first == true) {
             left = true;
             first = false;
@@ -152,7 +153,7 @@ function keyHandler(e) {
             right = false;
         }
     }
-    else if(e.key == "d") {
+    else if (e.key == "d" || e.key == "ArrowRight") {
         if (first == true) {
             right = true;
             first = false;
