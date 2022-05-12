@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+    background-image: url(images/circuitboard.jpg);
+    font-family: monospace;
+    font-size: 15px;
+    color: yellow;
+}
+
+h2 {
+    color: black;
+}
+
+.inline-block {
+   display: inline-block;
+}
