@@ -1,18 +1,6 @@
-
- p {
-	font-family: Arial
-}
-
-h1 {
-	font-family: Arial
-}
-
-h2 {
-	font-family: Arial
-}
-
-li {
-	font-family: Arial
+html {
+  text-align: center;
+  font-family: Arial;
 }
 
 .question {
@@ -26,8 +14,9 @@ li {
   margin-right: auto;
   width: 20%;
 }
+
 .apples {
-    display: block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 10%;
