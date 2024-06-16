@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pixelz</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <center><a href="../">Home</a></center>
+    <input type="file" id="fileInput" name="filename" accept="video/*">
+    
+    <p>if it gets stuck loading, try loading the file again, choose a different file, or reload the page.</p>
+
+    <div id="topDiv">
+        <p id="pixelCounter">0 Pixels</p>
+        <button id="mainButton" onclick=handleClick()>Select a video file first!</button>
+    </div>
+
+    <div id="canvasDiv">
+        <canvas id="display" width="480" height="480"></canvas>
+    </div>
+
+    <div id="upgDiv">
+        <p>-- Upgrades --</p>
+        <button id="upgradeClickButton" onclick=handleUpgrade("click")>+1 pixels per click - 10 Pixels</button>
+        <button id="upgradeAutoButton" onclick=handleUpgrade("auto")>+1 pixels per second - 500 Pixels</button>
+        <button id="upgradeImageSize" onclick=handleUpgrade("imageSize")>Upgrade image resolution - 10,000 Pixels</button>
+    </div>
+    
+    <!-- <p id="imageSizeCounter">Image size: 48x48</p> -->
+
+    <canvas id="imageLoaderCanvas" width="480" height="480" style="display: none;"></canvas>
+    <video id="Video" style="display: none;"></video>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
